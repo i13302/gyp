@@ -196,8 +196,8 @@ class WinTool(object):
       our_manifest = '%(out)s.manifest' % variables
       # Load and normalize the manifests. mt.exe sometimes removes whitespace,
       # and sometimes doesn't unfortunately.
-      with open(our_manifest, 'r') as our_f:
-        with open(assert_manifest, 'r') as assert_f:
+      with open(our_manifest, 'r', encoding='utf-8_sig') as our_f:
+        with open(assert_manifest, 'r', encoding='utf-8_sig') as assert_f:
           our_data = re.sub(r'\s+', '', our_f.read())
           assert_data = re.sub(r'\s+', '', assert_f.read())
       if our_data != assert_data:
